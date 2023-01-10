@@ -12,5 +12,9 @@ export default function App() {
 
   const names = squads.map((squad) => squad.name);
 
-  return <div className="App">{squads.map((squad) => squad)}</div>;
+  return (
+    <div className="App">
+      {squads.map((squad) => squad)} {squadOne}
+    </div>
+  );
 }
