@@ -7,10 +7,14 @@ export default function App() {
         return { name: item.name, score: item.score.reduce((a, b) => a + b) };
       });
 
-      console.log(squads);
+      console.log("squads", squads);
 
       const sortedScores = squads.sort((a, b) => b.score - a.score); // Sorted within each squad so far
-      console.log(sortedScores);
+      const firstInSquad = sortedScores[0];
+      console.log("sortedScores", sortedScores);
+      console.log("first in SQuad", firstInSquad);
+
+      //trying ot merge them
     }
   }
 
