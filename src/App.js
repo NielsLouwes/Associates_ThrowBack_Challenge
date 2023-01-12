@@ -1,16 +1,20 @@
-const squadsData = require("./squads.json");
+import { squadsData } from "./squads";
 
 export default function App() {
-  const squads = Object.keys(squadsData);
-  console.log(squads);
+  function findTopThreeOverall(data) {
+    for (const [key, value] of Object.entries(data)) {
+      const squads = value.map((item) => {
+        return { name: item.name, score: item.score.reduce((a, b) => a + b) };
+      });
 
-  const values = Object.values(squadsData);
-  console.log(values);
+      console.log(squads);
 
-  const squadOne = values[0][0]; // returns Niels
-  console.log(squadOne);
+      const sortedScores = squads.sort((a, b) => b.score - a.score); // Sorted within each squad so far
+      console.log(sortedScores);
+    }
+  }
 
-  const names = squads.map((squad) => squad.name);
+  findTopThreeOverall(squadsData);
 
-  return <div className="App">{squads.map((squad) => squad)}</div>;
+  return <div className="App"></div>;
 }
