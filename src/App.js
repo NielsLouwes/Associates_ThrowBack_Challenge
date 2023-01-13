@@ -26,10 +26,3 @@ export default function App() {
 
   return <div className="App"></div>;
 }
-
-// const compareScores = newArray.map((item) => {
-//         return {
-//           item: item.name,
-//           score: item.score.sort((a, b) => b.item.score - a.item.score)
-//         };
-//       });
