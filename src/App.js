@@ -16,11 +16,15 @@ export default function App() {
 
       const sortedScores = squads.sort((a, b) => b.score - a.score); // Sorted within each squad so far
 
-      players.push(squads); // returnsan array of arrays with objects
-      // trying to flatten this now to get all in one thing
+      players.push(squads); // returns an array of arrays with objects
+      // trying to flatten this now to get all in one array
       console.log(players);
       const newArray = players.flat(); // new flattened array now has one array with many objects
       console.log("new Array:", newArray);
+
+      // will now try to compare all scores
+
+      //return top 3 scoresa
     }
   }
 
@@ -29,7 +33,9 @@ export default function App() {
   return <div className="App"></div>;
 }
 
-// const arr1 = [0, 1, 2, [3, 4]];
-
-// console.log(arr1.flat());
-// // Expected output: Array [0, 1, 2, 3, 4]
+// const compareScores = newArray.map((item) => {
+//         return {
+//           item: item.name,
+//           score: item.score.sort((a, b) => b.item.score - a.item.score)
+//         };
+//       });
