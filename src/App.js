@@ -12,23 +12,17 @@ export default function App() {
         };
       });
 
-      console.log("squads", squads);
+      players.push(squads);
 
-      const sortedScores = squads.sort((a, b) => b.score - a.score); // Sorted within each squad so far
-
-      players.push(squads); // returns an array of arrays with objects
-      // trying to flatten this now to get all in one array
-      console.log(players);
-      const newArray = players.flat(); // new flattened array now has one array with many objects
-      console.log("new Array:", newArray);
-
-      // will now try to compare all scores
-
-      //return top 3 scoresa
+      const newArray = players.flat();
+      const sortedScores = newArray
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 3);
+      return sortedScores;
     }
   }
 
-  findTopThreeOverall(squadsData);
+  console.log("Top 3 scores overal:", findTopThreeOverall(squadsData));
 
   return <div className="App"></div>;
 }
