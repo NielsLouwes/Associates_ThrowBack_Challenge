@@ -1,8 +1,11 @@
 import { squadsData } from "./squads";
+import { AppUtils } from "./App.utils";
 
 export default function App() {
-  function findTopThreeOverall(data) {
-    let players = [];
+  const topThreeScoresOverall = AppUtils.findTopThreeOverall;
+  console.log("Top 3 scores overal:", topThreeScoresOverall(squadsData));
+
+  function FindTopThreeChallenges() {
     for (const [key, value] of Object.entries(data)) {
       const squads = value.map((item) => {
         return {
@@ -11,18 +14,8 @@ export default function App() {
           score: item.score.reduce((a, b) => a + b)
         };
       });
-
-      players.push(squads);
-
-      const newArray = players.flat();
-      const sortedScores = newArray
-        .sort((a, b) => b.score - a.score)
-        .slice(0, 3);
-      return sortedScores;
     }
   }
 
-  console.log("Top 3 scores overal:", findTopThreeOverall(squadsData));
-
-  return <div className="App"></div>;
+  return <></>;
 }
