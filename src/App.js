@@ -17,7 +17,10 @@ export default function App() {
         //   score: Math.max(item.score.map((item)));
         // };
         // console.log("maxPlayerScore:", maxPlayerScore);
-        console.log("Index of MAX Score", maxValueIndex);
+        players.push(maxValueIndex);
+        const newArray = players.flat(); //this returns the indexes of most occuring highest scores
+
+        console.log("Index of MAX Score", newArray);
       });
     }
   }
