@@ -9,14 +9,16 @@ export default function App() {
     for (const [key, value] of Object.entries(data)) {
       let players = [];
       const squads = value.map((item) => {
-        const maxPlayerScore = Math.max(...item);
-        return {
-          squad: key,
-          name: item.name,
-          score: Math.max(item.score.map((item)));
-        };
+        const maxPlayerScore = Math.max(...item.score); // returns max score
+        const maxValueIndex = item.score.indexOf(maxPlayerScore); //returns index of where Max score is being found in each person's list of scores
+        // return {
+        //   squad: key,
+        //   name: item.name,
+        //   score: Math.max(item.score.map((item)));
+        // };
+        // console.log("maxPlayerScore:", maxPlayerScore);
+        console.log("Index of MAX Score", maxValueIndex);
       });
-      console.log("squads:", squads.score);
     }
   }
 
@@ -29,6 +31,13 @@ export default function App() {
 // Check each score for each person, return the index number of the highest number
 // The three highest numbers can then be deduced from this
 
-// let array = [1, 2, 0, -5, 8, 3];
+// Array.indexOf(Math.max(...Array));
 
-// console.log(Math.max(...array)); //=> 8
+// const arr = [30, 20, 50, 70, 10, 40, 17];
+// console.log("Array is: ", arr);
+
+// // find the max value
+// const max_val = Math.max(...arr);
+
+// // find the index of highest value
+// const max_index = arr.indexOf(max_val);
