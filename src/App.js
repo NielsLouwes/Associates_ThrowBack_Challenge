@@ -11,17 +11,17 @@ export default function App() {
       const squads = value.map((item) => {
         const maxPlayerScore = Math.max(...item.score); // returns max score
         const maxValueIndex = item.score.indexOf(maxPlayerScore); //returns index of where Max score is being found in each person's list of scores
-        // return {
-        //   squad: key,
-        //   name: item.name,
-        //   score: Math.max(item.score.map((item)));
-        // };
-        // console.log("maxPlayerScore:", maxPlayerScore);
-        players.push(maxValueIndex);
-        const newArray = players.flat(); //this returns the indexes of most occuring highest scores
-
-        console.log("Index of MAX Score", newArray);
+        return {
+          squad: key,
+          name: item.name,
+          topChallengeIndex: maxValueIndex
+        };
       });
+      // console.log("maxPlayerScore:", maxPlayerScore);
+      players.push(squads); // we now have objects for each players with their most played challenge
+      const newArray = players.flat(); //this returns the indexes of most occuring highest scores
+
+      console.log("Index of MAX Score", newArray);
     }
   }
 
