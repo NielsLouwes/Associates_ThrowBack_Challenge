@@ -11,7 +11,7 @@ export default function App() {
       const squads = value.map((item) => {
         const maxPlayerScore = Math.max(...item.score); // returns max score
         console.log("max player score:", maxPlayerScore);
-        if (maxPlayerScore != 0) {
+        if (maxPlayerScore !== 0) {
           // filtering out those who didn't participate
           const maxValueIndex = item.score.indexOf(maxPlayerScore); //returns index of where Max score is being found in each person's list of scores
           return {
@@ -25,11 +25,39 @@ export default function App() {
       players.push(squads); // we now have objects for each players with their most played challenge
       const newArray = players.flat(); //this returns the indexes of most occuring highest scores
 
-      console.log("Index of MAX Score", newArray);
+      // console.log("Index of MAX Score", newArray);
     }
   }
 
-  console.log(FindTopThreeChallenges(squadsData));
+  function FindTopScoringSquads(data) {
+    for (const [key, value] of Object.entries(data)) {
+      let players = [];
+      const squads = value.map((item) => {
+        return {
+          squad: key,
+          name: item.name,
+          score: item.score.reduce((a, b) => a + b)
+        };
+      });
+
+      const getSquadScores = squads.map((squad) => {
+        return {
+          name: squad.name,
+          overallScore: squad.score
+        };
+      });
+
+      const scores = getSquadScores.map((obj) => obj.overallScore);
+
+      console.log(scores);
+
+      const newArray = scores.flat();
+      const addUpScores = newArray.reduce((a, b) => a + b);
+      console.log(addUpScores);
+    }
+  }
+
+  FindTopScoringSquads(squadsData);
 
   return <></>;
 }
