@@ -40,6 +40,8 @@ export default function App() {
         };
       });
 
+      console.log("squads:", squads);
+
       const getSquadScores = squads.map((squad) => {
         return {
           name: squad.name,
@@ -47,12 +49,19 @@ export default function App() {
         };
       });
 
-      const scores = getSquadScores.map((obj) => obj.overallScore);
+      console.log("getSquadScores", getSquadScores);
 
-      console.log(scores);
+      const scores = getSquadScores.map((squad) => {
+        return {
+          name: squad.name,
+          overallScore: squad.overallScore
+        };
+      });
+
+      console.log("SCORES: ", scores);
 
       const newArray = scores.flat();
-      const addUpScores = newArray.reduce((a, b) => a + b);
+      const addUpScores = newArray.reduce((a, b) => a + b); // its returning scores per squad, but i've lost the squad names
       console.log(addUpScores);
     }
   }
