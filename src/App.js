@@ -43,24 +43,17 @@ export default function App() {
       console.log("squads:", squads);
 
       const getSquadScores = squads.map((squad) => {
+        console.log(squad);
+        console.log(squad.squad);
         return {
-          name: squad.name,
+          name: squad.squad,
           overallScore: squad.score
         };
       });
 
       console.log("getSquadScores", getSquadScores);
 
-      const scores = getSquadScores.map((squad) => {
-        return {
-          name: squad.name,
-          overallScore: squad.overallScore
-        };
-      });
-
-      console.log("SCORES: ", scores);
-
-      const newArray = scores.flat();
+      const newArray = getSquadScores.flat();
       const addUpScores = newArray.reduce((a, b) => a + b); // its returning scores per squad, but i've lost the squad names
       console.log(addUpScores);
     }
