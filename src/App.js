@@ -29,52 +29,24 @@ export default function App() {
     }
   }
 
-  function FindTopScoringSquads(data) {
-    for (const [key, value] of Object.entries(data)) {
-      let players = [];
-      const squads = value.map((item) => {
-        return {
-          squad: key,
-          name: item.name,
-          score: item.score.reduce((a, b) => a + b)
-        };
-      });
+  const FindTopScoringSquads = (data) => {
+    let scores = [];
+    const firstSquad = data.Cohen.map((members) => {
+      // console.log("members", members); // return all members of Cohen
 
-      console.log("squads:", squads);
+      scores = members.score.reduce((a, b) => a + b);
+      // console.log("scores", scores);
+      return scores;
+    });
 
-      const getSquadScores = squads.map((squad) => {
-        console.log(squad);
-        console.log(squad.squad);
-        return {
-          name: squad.squad,
-          overallScore: squad.score
-        };
-      });
+    const result = {
+      scores: scores
+    };
 
-      console.log("getSquadScores", getSquadScores);
-
-      const newArray = getSquadScores.flat();
-      const addUpScores = newArray.reduce((a, b) => a + b); // its returning scores per squad, but i've lost the squad names
-      console.log(addUpScores);
-    }
-  }
+    return result;
+  };
 
   FindTopScoringSquads(squadsData);
 
   return <></>;
 }
-
-// psuedo code
-// Check each score for each person, return the index number of the highest number
-// The three highest numbers can then be deduced from this
-
-// Array.indexOf(Math.max(...Array));
-
-// const arr = [30, 20, 50, 70, 10, 40, 17];
-// console.log("Array is: ", arr);
-
-// // find the max value
-// const max_val = Math.max(...arr);
-
-// // find the index of highest value
-// const max_index = arr.indexOf(max_val);
