@@ -7,7 +7,8 @@ export default function App() {
 
   function FindTopThreeChallenges(data) {
     for (const [key, value] of Object.entries(data)) {
-      console.log("VALUE", value); // value is only returning the first object so only first
+      // console.log("VALUE", value); // value is only returning the first object so only first
+      // console.log("Keys", key);
       let scores = [];
       let playerMostPickedActivity = [];
       const squads = value.map((squadMember) => {
@@ -32,66 +33,20 @@ export default function App() {
     }
   }
 
-  const findTopThreeChallenges2 = (data) => {
-    Object.entries(data).forEach((eachSquad, key) => {
-      // console.log(eachSquad)
-      // 1 (top level) logics
-      let total = 0;
-      eachSquad.map((eachSquadMember) => {
-        // top level + inner level
-        // 1, 1.1, 1.2, 1.3
-        console.log(eachSquadMember);
-        // total = eachSquadMember.score.reduce(())
-      });
+  //BELOW function gives us the score per squad
 
-      // 1 = aletta = { name, total}
-      // 2 = koolhaas = { name, total }
-      const result = {
-        name: eachSquad[key],
-        total
-      };
-    });
-  };
+  const calculateSquadScore = (squad) =>
+    squad.reduce(
+      (total, player) => total + player.score.reduce((a, b) => a + b),
+      0
+    );
 
-  const FindTopScoringSquads2 = (data) => {
-    let scores = [];
-    const firstSquad = data.Cohen.map((members) => {
-      console.log("members", members); // return all members of Cohen
+  const squadsScore = Object.keys(squadsData).reduce((acc, squad) => {
+    acc[squad] = calculateSquadScore(squadsData[squad]);
+    return acc;
+  }, {});
 
-      scores = members.score.reduce((a, b) => a + b);
-      console.log("scores", scores);
-      return scores;
-    });
-
-    const result = {
-      scores: scores
-    };
-
-    return result;
-  };
-
-  const FindTopScoringSquads = (data) => {
-    // all squad
-    Object.entries(data).forEach((eachSquad, key) => {
-      console.log("EACH SQUAD:", eachSquad);
-      // 1 (top level) logics
-      let total = 0;
-      eachSquad.map((eachSquadMember, key) => {
-        // top level + inner level
-        // 1, 1.1, 1.2, 1.3
-        console.log("EACH SQUAD MEMBER:", eachSquadMember);
-      });
-
-      // 1 = aletta = { name, total}
-      // 2 = koolhaas = { name, total }
-      const result = {
-        name: eachSquad[key],
-        total
-      };
-    });
-  };
-
-  FindTopThreeChallenges(squadsData);
+  console.log(squadsScore);
 
   return <></>;
 }
