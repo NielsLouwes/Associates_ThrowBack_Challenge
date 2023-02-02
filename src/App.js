@@ -33,6 +33,33 @@ export default function App() {
     }
   }
 
+  // Below function gives us people who did at least 1 challenge vs. 0 challenges
+
+  const participationNumbers = (data) => {
+    let numPeopleWith0Scores = 0;
+    let numPeopleWithAtLeast1Score = 0;
+
+    for (const squad of Object.values(data)) {
+      // console.log("squad:", squad); // return each squad array with objects representing members
+      squad.forEach((member) => {
+        let totalScore = member.score.reduce((a, b) => a + b);
+        console.log("totalScore: ", totalScore); //all total scores of each member
+        if (totalScore === 0) {
+          numPeopleWith0Scores += 1;
+        } else {
+          numPeopleWithAtLeast1Score += 1;
+        }
+      });
+    }
+
+    return {
+      membersWithAtLeastOne: numPeopleWithAtLeast1Score,
+      membersWithNoScore: numPeopleWith0Scores
+    };
+  };
+
+  console.log(participationNumbers(squadsData));
+
   //BELOW function gives us the score per squad
 
   const calculateSquadScore = (squad) =>
@@ -46,7 +73,7 @@ export default function App() {
     return acc;
   }, {});
 
-  console.log(squadsScore);
+  // console.log(squadsScore);
 
   return <></>;
 }
