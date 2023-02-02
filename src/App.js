@@ -40,10 +40,9 @@ export default function App() {
     let numPeopleWithAtLeast1Score = 0;
 
     for (const squad of Object.values(data)) {
-      // console.log("squad:", squad); // return each squad array with objects representing members
       squad.forEach((member) => {
         let totalScore = member.score.reduce((a, b) => a + b);
-        console.log("totalScore: ", totalScore); //all total scores of each member
+
         if (totalScore === 0) {
           numPeopleWith0Scores += 1;
         } else {
