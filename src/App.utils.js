@@ -20,7 +20,7 @@ function findTopThreeOverall(data) {
 // const topThreeScoresOverall = AppUtils.findTopThreeOverall;
 // // console.log("Top 3 scores overal:", topThreeScoresOverall(squadsData));
 
-function FindTopThreeChallenges(data) {
+function FindMostParticipatedChallenge(data) {
   for (const [key, value] of Object.entries(data)) {
     // console.log("VALUE", value); // value is only returning the first object so only first
     // console.log("Keys", key);
