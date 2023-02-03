@@ -1,4 +1,5 @@
 import { squadsData } from "./squads";
+import { themes } from "./themes";
 import { AppUtils } from "./App.utils";
 
 export default function App() {
@@ -38,7 +39,7 @@ export default function App() {
           maxScoresIndexes.push(maxValueIndex);
         }
       });
-      console.log("maxScoresIndexes", maxScoresIndexes);
+      // console.log("maxScoresIndexes", maxScoresIndexes);
     }
 
     let frequency = {};
