@@ -16,6 +16,28 @@ function findTopThreeOverall(data) {
     return sortedScores;
   }
 }
+// THIS FUNCTION RETURNS HOW MANY PEOPLE PARTICIPATED VS. THOSE WHO DID NOT
+const getParticipationNumbers = (data) => {
+  let numPeopleWith0Scores = 0;
+  let numPeopleWithAtLeast1Score = 0;
+
+  for (const squad of Object.values(data)) {
+    squad.forEach((member) => {
+      let totalScore = member.score.reduce((a, b) => a + b);
+
+      if (totalScore === 0) {
+        numPeopleWith0Scores += 1;
+      } else {
+        numPeopleWithAtLeast1Score += 1;
+      }
+    });
+  }
+
+  return {
+    membersWithAtLeastOne: numPeopleWithAtLeast1Score,
+    membersWithNoScore: numPeopleWith0Scores
+  };
+};
 
 // const topThreeScoresOverall = AppUtils.findTopThreeOverall;
 // // console.log("Top 3 scores overal:", topThreeScoresOverall(squadsData));

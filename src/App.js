@@ -3,29 +3,6 @@ import { themes } from "./themes";
 import { AppUtils } from "./App.utils";
 
 export default function App() {
-  // Below function gives us people who did at least 1 challenge vs. 0 challenges
-  const getParticipationNumbers = (data) => {
-    let numPeopleWith0Scores = 0;
-    let numPeopleWithAtLeast1Score = 0;
-
-    for (const squad of Object.values(data)) {
-      squad.forEach((member) => {
-        let totalScore = member.score.reduce((a, b) => a + b);
-
-        if (totalScore === 0) {
-          numPeopleWith0Scores += 1;
-        } else {
-          numPeopleWithAtLeast1Score += 1;
-        }
-      });
-    }
-
-    return {
-      membersWithAtLeastOne: numPeopleWithAtLeast1Score,
-      membersWithNoScore: numPeopleWith0Scores
-    };
-  };
-
   function FindMostParticipatedChallenge(data) {
     let maxScoresIndexes = [];
     for (const squad of Object.values(data)) {
@@ -62,15 +39,14 @@ export default function App() {
     return mostFrequent;
   }
 
-  console.log(FindMostParticipatedChallenge(squadsData));
-  // console.log(getParticipationNumbers(squadsData));
+  const getMostParticipations = () => {};
 
   return <></>;
 }
 
-/* 
+/*  TO DO
 1. Go into each squad
-2. Pick the highest score from each squad member
+2. Count the number of non zero numbers and return per person
 3. Return the index of the highest scoring challenge
 4. Put those indexes in an array
 5. return the most occuring index
