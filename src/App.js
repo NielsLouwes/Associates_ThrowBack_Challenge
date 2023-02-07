@@ -40,18 +40,21 @@ export default function App() {
   }
 
   const getMostParticipations = (data) => {
+    let count = 0;
     for (const squad of Object.values(data)) {
-      for (const squadMember of squad) {
-        console.log("squadMember:", squadMember);
-        const participation = squadMember.score.filter((individualScore) => {
-          if (individualScore !== 0) {
-            return participation;
+      squad.forEach((member) => {
+        let totalScore = member.score.filter((singleScore) => {
+          if (singleScore !== 0) {
+            count++;
           }
         });
-      }
+        return totalScore;
+      });
     }
+    return count;
   };
-  getMostParticipations(squadsData);
+
+  console.log("participations: ", getMostParticipations(squadsData));
   return <></>;
 }
 
