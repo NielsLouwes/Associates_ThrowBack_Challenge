@@ -40,18 +40,21 @@ export default function App() {
   }
 
   const getMostParticipations = (data) => {
-    let count = 0;
     for (const squad of Object.values(data)) {
       squad.forEach((member) => {
         let totalScore = member.score.filter((singleScore) => {
+          let count = 0;
           if (singleScore !== 0) {
             count++;
+            return {
+              name: member,
+              participations: count
+            };
           }
         });
-        return totalScore;
+        console.log("totalScore:", totalScore);
       });
     }
-    return count;
   };
 
   console.log("participations: ", getMostParticipations(squadsData));
