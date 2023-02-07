@@ -86,5 +86,7 @@ function FindMostParticipatedChallenge(data) {
 // console.log(squadsScore);
 
 export const AppUtils = {
-  findTopThreeOverall
+  findTopThreeOverall,
+  getParticipationNumbers,
+  FindMostParticipatedChallenge
 };

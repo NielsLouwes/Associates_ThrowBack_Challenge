@@ -39,16 +39,30 @@ export default function App() {
     return mostFrequent;
   }
 
-  const getMostParticipations = () => {};
-
+  const getMostParticipations = (data) => {
+    for (const squad of Object.values(data)) {
+      for (const squadMember of squad) {
+        console.log("squadMember:", squadMember);
+        const participation = squadMember.score.filter((individualScore) => {
+          if (individualScore !== 0) {
+            return participation;
+          }
+        });
+      }
+    }
+  };
+  getMostParticipations(squadsData);
   return <></>;
 }
 
 /*  TO DO
 1. Go into each squad
-2. Count the number of non zero numbers and return per person
-3. Return the index of the highest scoring challenge
-4. Put those indexes in an array
-5. return the most occuring index
-6. match that with the name of the challenge , its index from the other file
+2. Count the number of non zero numbers and return per person 
+3. data = {
+  person: squad.person.name
+  participationScore: personCount,
+}
+4. Put those objects in an array in the upper scope
+5. Sort the objects by participation score
+6. Return highest participation
 */
