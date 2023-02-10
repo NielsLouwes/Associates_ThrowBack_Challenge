@@ -41,12 +41,14 @@ export default function App() {
 
   const returnSquadScores = (data) => {
     let totalPerSquad = [];
+    // after adding squadMembers scores per squad in the below scope, we push the squadName using key and totalSquadScore as the total to the totalPerSquad array.
     for (const [key, value] of Object.entries(data)) {
       // loop 1 - squads
 
       let totalSquadScore = 0;
       value.map((item) => {
         // loop 2 squadMembers
+        // Here we are looping over squadMember scores and adding them up while keeping track on scope up in variable called totalSquadScore.
         totalSquadScore += item.score.reduce(
           (firstItem, secondItem) => firstItem + secondItem
         );
