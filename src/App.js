@@ -40,18 +40,25 @@ export default function App() {
   }
 
   const returnSquadScores = (data) => {
+    let totalPerSquad = [];
     for (const [key, value] of Object.entries(data)) {
-      let total = [];
-      const squad = value.map((item) => {
-        const playerScore = item.score.reduce(
+      // loop 1 - squads
+
+      let totalSquadScore = 0;
+      value.map((item) => {
+        // loop 2 squadMembers
+        totalSquadScore += item.score.reduce(
           (firstItem, secondItem) => firstItem + secondItem
         );
-        console.log("playerScore:", playerScore)
-
-        // console.log(squad);
+      });
+      totalPerSquad.push({
+        squadName: key,
+        total: totalSquadScore
       });
     }
+    console.log("totalPerSquad:", totalPerSquad);
   };
+
   console.log(returnSquadScores(squadsData));
 
   // const getMostParticipations = (data) => {
