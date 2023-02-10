@@ -39,25 +39,41 @@ export default function App() {
     return mostFrequent;
   }
 
-  const getMostParticipations = (data) => {
-    for (const squad of Object.values(data)) {
-      squad.forEach((member) => {
-        let totalScore = member.score.filter((singleScore) => {
-          let count = 0;
-          if (singleScore !== 0) {
-            count++;
-            return {
-              name: member,
-              participations: count
-            };
-          }
-        });
-        console.log("totalScore:", totalScore);
+  const returnSquadScores = (data) => {
+    for (const [key, value] of Object.entries(data)) {
+      let total = [];
+      const squad = value.map((item) => {
+        const playerScore = item.score.reduce(
+          (firstItem, secondItem) => firstItem + secondItem
+        );
+        console.log("playerScore:", playerScore)
+
+        // console.log(squad);
       });
     }
   };
+  console.log(returnSquadScores(squadsData));
 
-  console.log("participations: ", getMostParticipations(squadsData));
+  // const getMostParticipations = (data) => {
+  //   for (const squad of Object.values(data)) {
+  //     squad.forEach((member) => {
+  //       let totalScore = member.score.filter((singleScore) => {
+  //         let count = 0;
+  //         if (singleScore !== 0) {
+  //           count++;
+  //         }
+  //         return count;
+  //       });
+  //       console.log("totalScore:", totalScore);
+  //       return {
+  //         squadMember: member.name,
+  //         count: count
+  //       };
+  //     });
+  //   }
+  // };
+
+  // console.log("participations: ", getMostParticipations(squadsData));
   return <></>;
 }
 

@@ -1,3 +1,5 @@
+import { squadsData } from "./squads";
+
 function findTopThreeOverall(data) {
   let players = [];
   for (const [key, value] of Object.entries(data)) {
