@@ -61,39 +61,15 @@ export default function App() {
     console.log("totalPerSquad:", totalPerSquad);
   };
 
-  console.log(returnSquadScores(squadsData));
+  const topPlayerPerSquad = (data) => {};
 
-  // const getMostParticipations = (data) => {
-  //   for (const squad of Object.values(data)) {
-  //     squad.forEach((member) => {
-  //       let totalScore = member.score.filter((singleScore) => {
-  //         let count = 0;
-  //         if (singleScore !== 0) {
-  //           count++;
-  //         }
-  //         return count;
-  //       });
-  //       console.log("totalScore:", totalScore);
-  //       return {
-  //         squadMember: member.name,
-  //         count: count
-  //       };
-  //     });
-  //   }
-  // };
-
-  // console.log("participations: ", getMostParticipations(squadsData));
   return <></>;
 }
 
-/*  TO DO
-1. Go into each squad
-2. Count the number of non zero numbers and return per person 
-3. data = {
-  person: squad.person.name
-  participationScore: personCount,
-}
-4. Put those objects in an array in the upper scope
-5. Sort the objects by participation score
-6. Return highest participation
+/* TO DO
+1. I need to add up player scores (loop over squads, loop over players, reduce their scores and return them back to squads with a variable)
+2. Sort te players
+3. return the top player per team
+4. return that in an array, with  a team object and top player name and score as object
+
 */
