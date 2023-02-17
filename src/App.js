@@ -61,8 +61,25 @@ export default function App() {
     console.log("totalPerSquad:", totalPerSquad);
   };
 
-  const topPlayerPerSquad = (data) => {};
+  const topPlayerPerSquad = (data) => {
+    for (const [key, value] of Object.entries(data)) {
+      // console.log("key", key, "value:", value); // returns each squad name for KEY and an array with each squad members as value
+      let highScores = [];
+      const squad = value.map((squadMember) => {
+        const sortedScores = squadMember.score.reduce((a, b) => a + b);
+        return {
+          member: squadMember.name,
+          score: squadMember.score.reduce((a, b) => a + b)
+        };
+      });
 
+      const sortedSquads = squad.sort();
+      console.log("sortedSquads:", sortedSquads);
+      return sortedSquads;
+    }
+  };
+
+  topPlayerPerSquad(squadsData);
   return <></>;
 }
 
